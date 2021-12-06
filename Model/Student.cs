@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace core3._1api.Model
+namespace StudentAPI.Model
 {
     public class Student
     {
@@ -12,6 +12,5 @@ namespace core3._1api.Model
         public string LastName { get; set; }
         public string Gender { get; set; }
         public int Salary { get; set; }
-
     }
 }

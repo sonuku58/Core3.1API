@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using core3._1api;
+using StudentAPI;
 
-namespace core3._1api.Migrations
+namespace StudentAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20211122102957_Initial")]
@@ -20,7 +20,7 @@ namespace core3._1api.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("core3._1api.Model.Student", b =>
+            modelBuilder.Entity("StudentAPI.Model.Student", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

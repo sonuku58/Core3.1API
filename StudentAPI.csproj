@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>core3._1api</RootNamespace>
+    <RootNamespace>StudentAPI</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

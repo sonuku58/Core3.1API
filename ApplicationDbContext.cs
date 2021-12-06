@@ -1,4 +1,4 @@
-﻿using core3._1api.Model;
+﻿using StudentAPI.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace core3._1api
+namespace StudentAPI
 {
     public class ApplicationDbContext : DbContext
     {

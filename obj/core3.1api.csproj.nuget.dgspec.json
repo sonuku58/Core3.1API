@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\webapi\\core3.1api\\core3.1api\\core3.1api.csproj": {}
+    "D:\\webapi\\Studentbackfront\\Core3.1API\\core3.1api.csproj": {}
   },
   "projects": {
-    "D:\\webapi\\core3.1api\\core3.1api\\core3.1api.csproj": {
+    "D:\\webapi\\Studentbackfront\\Core3.1API\\core3.1api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\webapi\\core3.1api\\core3.1api\\core3.1api.csproj",
+        "projectUniqueName": "D:\\webapi\\Studentbackfront\\Core3.1API\\core3.1api.csproj",
         "projectName": "core3.1api",
-        "projectPath": "D:\\webapi\\core3.1api\\core3.1api\\core3.1api.csproj",
+        "projectPath": "D:\\webapi\\Studentbackfront\\Core3.1API\\core3.1api.csproj",
         "packagesPath": "C:\\Users\\sonu.kumar\\.nuget\\packages\\",
-        "outputPath": "D:\\webapi\\core3.1api\\core3.1api\\obj\\",
+        "outputPath": "D:\\webapi\\Studentbackfront\\Core3.1API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -4,7 +4,7 @@
     "anonymousAuthentication": true,
     "iisExpress": {
       "applicationUrl": "http://localhost:48777",
-      "sslPort": 44373
+      "sslPort": 0
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
@@ -12,16 +12,16 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/student",
+      "launchUrl": "Student",
       "environmentVariables": {
         "Key": "Value",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "core3._1api": {
+    "StudentAPI": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/student",
+      "launchUrl": "Student",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
