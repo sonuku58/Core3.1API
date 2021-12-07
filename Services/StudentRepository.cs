@@ -19,23 +19,27 @@ namespace StudentAPI.Services
             this.context = _context;
             this.mapper= _mapper;                
         }
-        public  IEnumerable<StudentDto> GetAllStudent()
+        private IEnumerable<StudentDto> AllStudent()
         {
-            var allStudent = context.Students.AsNoTracking().ToList();
-            var listOfStudent = mapper.Map<IEnumerable<StudentDto>>(allStudent);
-            return listOfStudent;
+            var studentList = context.Students.AsNoTracking().ToList();
+            var allStudentList = mapper.Map<IEnumerable<StudentDto>>(studentList);
+            return allStudentList;
         }
-        public Student StudentById(int Id)
+
+        private Student StudentDetailById(int Id)
         {
-            return  context.Students.FirstOrDefault(x => x.Id == Id);
+            return context.Students.FirstOrDefault(x => x.Id == Id);
         }
-        public void AddStudent(Student student)
+
+        private void PostStudent(Student student)
         {
             context.Add(student);
             context.SaveChanges();
         }
-        public void UpdateStudent(int Id,Student student)
-        {           
+
+        private void UpdateStudentDetail(int Id, Student student)
+        {
+
             var students = context.Students.FirstOrDefault(s => s.Id == Id);
             students.FirstName = student.FirstName;
             students.LastName = student.LastName;
@@ -43,7 +47,8 @@ namespace StudentAPI.Services
             students.Salary = student.Salary;
             context.SaveChanges();
         }
-        public void UpdateStudent(Student student)
+
+        private void UpdateStudentDetail(Student student)
         {
             var students = context.Students.FirstOrDefault(s => s.Id == student.Id);
             students.FirstName = student.FirstName;
@@ -52,10 +57,38 @@ namespace StudentAPI.Services
             students.Salary = student.Salary;
             context.SaveChanges();
         }
-        public void RemoveStudent(Student student)
+
+        private void Remove(Student student)
         {
             context.Remove(student);
             context.SaveChanges();
-        }        
+        }
+        public IEnumerable<StudentDto> GetAllStudent()
+        {
+            return this.AllStudent();
+        }
+        public Student StudentById(int Id)
+        {
+            return this.StudentDetailById(Id);
+        }
+
+        public void AddStudent(Student student)
+        {
+            this.PostStudent(student);
+        }
+
+        public void UpdateStudent(int Id, Student student)
+        {
+            this.UpdateStudentDetail(Id, student);
+        }
+
+        public void UpdateStudent(Student student)
+        {
+            this.UpdateStudentDetail(student);
+        }
+        public void RemoveStudent(Student student)
+        {
+            this.Remove(student);
+        }
     }
 }
