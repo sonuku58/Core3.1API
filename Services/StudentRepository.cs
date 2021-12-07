@@ -65,30 +65,30 @@ namespace StudentAPI.Services
         }
         public IEnumerable<StudentDto> GetAllStudent()
         {
-            return this.AllStudent();
+            return AllStudent();
         }
         public Student StudentById(int Id)
         {
-            return this.StudentDetailById(Id);
+            return StudentDetailById(Id);
         }
 
         public void AddStudent(Student student)
         {
-            this.PostStudent(student);
+            PostStudent(student);
         }
 
         public void UpdateStudent(int Id, Student student)
         {
-            this.UpdateStudentDetail(Id, student);
+            UpdateStudentDetail(Id, student);
         }
 
         public void UpdateStudent(Student student)
         {
-            this.UpdateStudentDetail(student);
+            UpdateStudentDetail(student);
         }
         public void RemoveStudent(Student student)
         {
-            this.Remove(student);
+            Remove(student);
         }
     }
 }
