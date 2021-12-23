@@ -5736,11 +5736,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\webapi\\Studentbackfront\\Core3.1API\\StudentAPI.csproj",
+      "projectUniqueName": "D:\\webapi\\StudentApi\\Core3.1API\\StudentAPI.csproj",
       "projectName": "StudentAPI",
-      "projectPath": "D:\\webapi\\Studentbackfront\\Core3.1API\\StudentAPI.csproj",
+      "projectPath": "D:\\webapi\\StudentApi\\Core3.1API\\StudentAPI.csproj",
       "packagesPath": "C:\\Users\\sonu.kumar\\.nuget\\packages\\",
-      "outputPath": "D:\\webapi\\Studentbackfront\\Core3.1API\\obj\\",
+      "outputPath": "D:\\webapi\\StudentApi\\Core3.1API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

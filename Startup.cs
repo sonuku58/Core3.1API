@@ -28,7 +28,7 @@ namespace StudentAPI
         {
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<BaseStudentRepository, StudentRepository>();
             services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
         }       

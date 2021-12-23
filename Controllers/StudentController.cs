@@ -14,12 +14,14 @@ namespace StudentAPI.Controllers
     {       
         private readonly ApplicationDbContext context;
         private readonly IMapper mapper;
-        private readonly IStudentRepository studentRepository;
-        public StudentController(ApplicationDbContext context,IMapper mapper,IStudentRepository _studentRepository)
+      
+        private readonly BaseStudentRepository studentRepository;
+        public StudentController(ApplicationDbContext context,IMapper mapper,BaseStudentRepository _studentRepository)
         {
             this.context = context;
             this.mapper = mapper;
-            this.studentRepository = _studentRepository;
+            this.studentRepository = _studentRepository; 
+         
         }
 
         [HttpGet]
@@ -31,10 +33,15 @@ namespace StudentAPI.Controllers
         }
 
         [HttpGet("{Id:int}", Name="GetStudent")]
-        public  ActionResult<StudentDto> GetStudentById(int Id)
+        public  ActionResult<StudentDto>  GetStudentById(int Id)
         {
             var studentDetail = studentRepository.StudentById(Id);
-            var studentById = mapper.Map<StudentDto>(studentDetail);
+            if(studentDetail==null)
+            {
+                //return RedirectToAction("Error", "Student");
+                return Content(studentRepository.WrongRequest());
+            }
+            var studentById = mapper.Map<StudentDto>(studentDetail);          
             return studentById;
         }   
         
@@ -53,6 +60,7 @@ namespace StudentAPI.Controllers
             if (exist == null)
             {
                 return NotFound();
+                
             }           
             var student = mapper.Map<Student>(studentCreation);
             studentRepository.UpdateStudent(Id, student);
@@ -83,5 +91,6 @@ namespace StudentAPI.Controllers
             studentRepository.RemoveStudent(exist);
             return NoContent();
         }
+      
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace StudentAPI.Services
 {
-    public class StudentRepository : IStudentRepository
+    public class StudentRepository : BaseStudentRepository
     {
         private readonly ApplicationDbContext context;
         private readonly IMapper mapper;
@@ -63,30 +63,30 @@ namespace StudentAPI.Services
             context.Remove(student);
             context.SaveChanges();
         }
-        public IEnumerable<StudentDto> GetAllStudent()
+        public override IEnumerable<StudentDto> GetAllStudent()
         {
             return AllStudent();
         }
-        public Student StudentById(int Id)
+        public override Student StudentById(int Id)
         {
             return StudentDetailById(Id);
         }
 
-        public void AddStudent(Student student)
+        public override void AddStudent(Student student)
         {
             PostStudent(student);
         }
 
-        public void UpdateStudent(int Id, Student student)
+        public override void UpdateStudent(int Id, Student student)
         {
             UpdateStudentDetail(Id, student);
         }
 
-        public void UpdateStudent(Student student)
+        public override void UpdateStudent(Student student)
         {
             UpdateStudentDetail(student);
         }
-        public void RemoveStudent(Student student)
+        public override void RemoveStudent(Student student)
         {
             Remove(student);
         }
