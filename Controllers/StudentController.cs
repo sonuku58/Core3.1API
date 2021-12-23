@@ -38,7 +38,6 @@ namespace StudentAPI.Controllers
             var studentDetail = studentRepository.StudentById(Id);
             if(studentDetail==null)
             {
-                //return RedirectToAction("Error", "Student");
                 return Content(studentRepository.WrongRequest());
             }
             var studentById = mapper.Map<StudentDto>(studentDetail);          
