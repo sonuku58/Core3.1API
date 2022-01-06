@@ -5,9 +5,12 @@ using StudentAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StudentAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("Student")]
     public class StudentController : Controller
@@ -23,13 +26,13 @@ namespace StudentAPI.Controllers
             this.studentRepository = _studentRepository; 
          
         }
-
+      
         [HttpGet]
         public ActionResult<IEnumerable<StudentDto>> GetStudent()
         {
             var studentList = studentRepository.GetAllStudent();
             var allStudent = mapper.Map<List<StudentDto>>(studentList);
-            return allStudent;
+            return allStudent;       
         }
 
         [HttpGet("{Id:int}", Name="GetStudent")]

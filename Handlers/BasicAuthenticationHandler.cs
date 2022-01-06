@@ -1,0 +1,68 @@
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using StudentAPI.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Security.Claims;
+using System.Text;
+using System.Text.Encodings.Web;
+using System.Threading.Tasks;
+
+namespace StudentAPI.Handlers
+{
+    public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
+    {
+        private readonly ApplicationDbContext context;
+        public BasicAuthenticationHandler(
+            IOptionsMonitor<AuthenticationSchemeOptions> options,
+            ILoggerFactory logger ,
+            UrlEncoder encoder,
+            ApplicationDbContext _context,
+            ISystemClock clock):base(options,logger,encoder,clock)
+        {
+            context = _context;
+        }
+
+
+        protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
+        {
+
+            if(!Request.Headers.ContainsKey("Authorization"))
+            {
+                return  AuthenticateResult.Fail("Authorization header was not found");
+            }
+
+            try
+            {
+                var authenticationHeaderValue = AuthenticationHeaderValue.Parse(Request.Headers["Authorization"]);
+                var bytes = Convert.FromBase64String(authenticationHeaderValue.Parameter);
+                string[] credentials = Encoding.UTF8.GetString(bytes).Split(":");
+                string userName = credentials[0];
+                string password = credentials[1];
+
+                User user = context.Users.Where(user => user.UserName == userName && user.Password == password).FirstOrDefault();
+                if(user==null)
+                    return AuthenticateResult.Fail("Invalid UserName or password");
+                else
+                {
+                    var claims = new[] { new Claim(ClaimTypes.Name, user.UserName) };
+                    var identity = new ClaimsIdentity(claims, Scheme.Name);
+                    var principle = new ClaimsPrincipal(identity);
+                    var ticket = new AuthenticationTicket(principle,Scheme.Name);
+
+                    return AuthenticateResult.Success(ticket);
+
+                }
+                
+            }
+            catch(Exception)
+            {
+                return AuthenticateResult.Fail("Error");
+
+            }
+        }
+    }
+}

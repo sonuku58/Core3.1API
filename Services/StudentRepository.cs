@@ -19,6 +19,7 @@ namespace StudentAPI.Services
             this.context = _context;
             this.mapper= _mapper;                
         }
+
         private IEnumerable<StudentDto> AllStudent()
         {
             var studentList = context.Students.AsNoTracking().ToList();
@@ -90,5 +91,7 @@ namespace StudentAPI.Services
         {
             Remove(student);
         }
+
+       
     }
 }
