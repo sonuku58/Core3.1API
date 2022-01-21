@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+      <nav class="navbar   navbar-expand-md navbar-dark bg-dark mt-4">
+        <div class="container-fluid">
+          <div class="  col-md-6 ">
+            <p class="navbar-brand" >STUDENT </p>
+      
+            <p class="navbar-brand" *ngIf="islog">Welcome {{ username | uppercase}}  </p> 
+            
+          </div>
+          <div class=" col-md-6 ">    
+            
+             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
+               <span class="navbar-toggler-icon"></span>
+             </button>
+             <div class="collapse navbar-collapse" id="navbar-menu">
+               <ul class="navbar-nav ">
+               
+                     <li><a routerLink="/home" class="navbar-link">Home</a></li>
+               
+                     <li><a routerLink="/show" class="navbar-link">Show</a></li>
+               
+                   <li><a routerLink="/addstudent" class="navbar-link">Add Student</a></li>
+                 
+                   <li><a routerLink="/about" class="navbar-link">About Us</a></li>
+                   <li> <button class="btn btn-primary" routerLink="/login"  *ngIf="!islog" > Login</button> </li>
+                   <li> <button class="btn btn-danger" *ngIf="islog"  (click)="logout()"> Logout</button> </li>
+                  
+                   
+               </ul>
+             </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+<router-outlet ></router-outlet>
+<app-footer> </app-footer> 

@@ -1,0 +1,19 @@
+.container{
+    margin-top: 30px;
+}
+h2{
+    text-align: center;
+}
+thead{
+    background-color: rgb(122, 84, 12);
+    text-align: center;
+}
+tbody{
+    text-align: center;
+}
+
+@media (max-width:768px){
+    .phone{
+        display: none;
+    }
+}

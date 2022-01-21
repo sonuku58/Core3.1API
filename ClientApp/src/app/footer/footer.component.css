@@ -1,0 +1,30 @@
+.container{
+    margin-top:40px;
+    color: #f1f1f1;
+    background-color: #8a6dda;
+}
+
+.contact{
+    text-align:center;
+    
+    font-size: 14px;
+    font-weight: normal;
+    padding: 25px 0;
+}
+.main{
+    text-align: center;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 25px 0;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+a:hover{
+    color:red;
+}
+ul{
+    list-style: none;
+}
+

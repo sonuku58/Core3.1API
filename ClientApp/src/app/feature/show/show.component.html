@@ -1,0 +1,121 @@
+<div class="container">
+    <div class="row">
+      <h2> List Of All Student</h2>
+    </div>
+
+    <div class="row">
+      <div class=" col-md-9">
+        <input type="text"  placeholder=" Search by Name" [(ngModel)]="nameSearch"/>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table  table-hover mt-3"  >
+                <thead>
+                    <tr>
+                        <th>Student ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Salary</th>
+                        <th>Gender</th>
+                        <th>Action</th>  
+                    </tr>
+                </thead>
+                <tbody *ngIf="loginStatus">
+                    <tr *ngFor="let student of allStudent | nameFilter:nameSearch " >
+                        <td>{{student.id}}</td>
+                        <td>{{student.firstName | uppercase}}</td>
+                        <td>{{student.lastName | uppercase}}</td>                
+                        <td>{{student.salary}}</td>
+                        <td>{{student.gender}}</td>
+                        <td>                          
+                            <button type="button" class="btn btn-primary p-1" (click)="onEdit(student)" data-bs-toggle="modal"  data-bs-target="#staticBackdrop">Edit</button> &nbsp;                               
+                            <button   class="btn btn-danger p-1" (click)='deleteStudentDetail(student)'>Delete</button>                           
+                        </td>
+                    </tr>
+                </tbody>
+                
+            </table>
+            <h2 *ngIf="!loginStatus"> Please Login to watch the Details of Student</h2>
+        </div>
+    </div>
+    
+
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"   >
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Update Detail </h5>
+          <button type="close" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+            <form  [formGroup]="formValue">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input
+                      type="text"
+                      formControlName="firstName"
+                      class="form-control"
+                      [ngClass]="{ 'is-invalid': formValue.controls['firstName'].errors  }"
+                    />
+                  <div *ngIf="formValue.controls['firstName'].errors && formValue.controls['firstName'].errors.required" class="invalid-feedback">
+                        Fullname is required!
+                    </div>
+                    <div *ngIf="formValue.controls['firstName'].errors && formValue.controls['firstName'].errors.pattern" class="invalid-feedback">
+                        Please enter only letters.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input
+                      type="text"
+                      formControlName="lastName"
+                      class="form-control"
+                      [ngClass]="{ 'is-invalid': formValue.controls['lastName'].errors  }"
+                    />
+                      <div *ngIf="formValue.controls['lastName'].errors && formValue.controls['lastName'].errors.required" class="invalid-feedback">
+                        LastName is required!
+                      </div>
+                      <div *ngIf="formValue.controls['lastName'].errors && formValue.controls['lastName'].errors.pattern" class="invalid-feedback">
+                        Please enter only letters.
+                      </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Salary</label>
+                    <input
+                      type="number"
+                      formControlName="salary"
+                      class="form-control"                 
+                    />                
+                </div>
+
+                <div class="form-group">
+                    <label  class="form-label">Gender</label>
+                    <div class="form-check">
+                      <input  formControlName="gender" class="form-check-input" type="radio"   value="Male" >
+                      <label class="form-check-label" for="exampleRadios1">
+                        Male
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input formControlName="gender" class="form-check-input" type="radio"  value="Female">
+                      <label class="form-check-label" for="exampleRadios2">
+                        Female
+                      </label>
+                    </div>
+                  </div>
+            </form>
+         
+        </div>
+        <div class="modal-footer">
+          <button type="button"  (click)="updateStudentDetails()" class="btn btn-primary">Update</button>
+        </div>
+        
+      </div>
+    </div>
+  </div> 
+
+</div>

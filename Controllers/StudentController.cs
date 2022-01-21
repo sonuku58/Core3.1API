@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace StudentAPI.Controllers
 {
+
     [Authorize]
     [ApiController]
     [Route("Student")]
@@ -24,7 +25,7 @@ namespace StudentAPI.Controllers
             this.context = context;
             this.mapper = mapper;
             this.studentRepository = _studentRepository; 
-         
+     
         }
       
         [HttpGet]
@@ -47,6 +48,7 @@ namespace StudentAPI.Controllers
             return studentById;
         }   
         
+        
         [HttpPost]
         public ActionResult PostStudent([FromBody] StudentCreationDto studentCreation)
         {
@@ -55,6 +57,8 @@ namespace StudentAPI.Controllers
             return new CreatedAtRouteResult("GetStudent", new { Id = student.Id }, student);
         }
 
+        
+        [Authorize(Roles = Role.Admin)]
         [HttpPut("{Id:int}")] 
         public ActionResult ModifyStudent(int Id,[FromBody] StudentCreationDto studentCreation )
         {
@@ -69,6 +73,7 @@ namespace StudentAPI.Controllers
             return Ok();
         }
 
+        [Authorize(Roles = Role.Admin)]
         [HttpPut]
         public ActionResult ModifyStudent([FromBody] StudentDto editStudent)
         {
@@ -82,6 +87,8 @@ namespace StudentAPI.Controllers
             return Ok();
         }
 
+
+        [Authorize(Roles = Role.Admin)]
         [HttpDelete("{Id:int}")]
         public ActionResult DeleteStudent(int Id)
         {
