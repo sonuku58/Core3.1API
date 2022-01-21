@@ -45,6 +45,7 @@
   <ItemGroup>
     <Folder Include="ClientApp\src\NewFolder1\" />
     <Folder Include="ClientApp\src\NewFolder\" />
+    <Folder Include="Handlers\" />
   </ItemGroup>
 
 
